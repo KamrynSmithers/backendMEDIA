@@ -18,5 +18,11 @@
   "bugs": {
     "url": "https://github.com/KamrynSmithers/backendMEDIA/issues"
   },
-  "homepage": "https://github.com/KamrynSmithers/backendMEDIA#readme"
+  "homepage": "https://github.com/KamrynSmithers/backendMEDIA#readme",
+  "dependencies": {
+    "cors": "^2.8.6",
+    "dotenv": "^17.3.1",
+    "express": "^5.2.1",
+    "mongoose": "^9.2.1"
+  }
 }
