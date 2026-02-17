@@ -9,8 +9,20 @@ dotenv.config();
 
 const app = express();
 
-app.use(cors());
+app.use(cors({
+  origin: 'http://localhost:5173' // Your Vite dev server
+}));
 app.use(express.json());
+
+app.post('/api/login', (req, res) => {
+  const { email, password } = req.body;
+
+if (email === 'test@test.com' && password === 'password') {
+    res.json({ success: true, token: 'your-jwt-token' });
+  } else {
+    res.status(401).json({ success: false, message: 'Invalid credentials' });
+  }
+});
 
 app.get("/", (req, res) => {
   res.send("API is running...");
