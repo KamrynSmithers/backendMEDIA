@@ -10,6 +10,8 @@ const generateToken = (id) => {
 // Register
 export const register = async (req, res) => {
   try {
+    console.log('Register hit');
+    console.log('Body:', req.body);
     const { username, email, password } = req.body;
 
     // Check if user already exists
@@ -19,8 +21,11 @@ export const register = async (req, res) => {
     }
 
     // Create user
-    const user = await User.create({ username, email, password });
+const salt = await bcrypt.genSalt(10);
+const hashedPassword = await bcrypt.hash(password, salt);
 
+// Create user
+const user = await User.create({ username, email, password: hashedPassword });
     res.status(201).json({
       _id: user._id,
       username: user.username,
@@ -28,6 +33,7 @@ export const register = async (req, res) => {
       token: generateToken(user._id),
     });
   } catch (error) {
+    console.log('Register error:', error.message);
     res.status(500).json({ message: error.message });
   }
 };
@@ -35,6 +41,8 @@ export const register = async (req, res) => {
 // Login
 export const login = async (req, res) => {
   try {
+    console.log('Login hit');
+    console.log('Body:', req.body);
     const { email, password } = req.body;
 
     // Find user
@@ -56,6 +64,7 @@ export const login = async (req, res) => {
       token: generateToken(user._id),
     });
   } catch (error) {
+    console.log('Login error:', error.message);
     res.status(500).json({ message: error.message });
   }
 };
