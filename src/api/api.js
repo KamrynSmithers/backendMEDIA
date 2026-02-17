@@ -16,3 +16,12 @@ api.interceptors.request.use((config) => {
   return config;
 });
 
+export const login = (email, password) => {
+  return api.post('/api/login', { email, password });
+};
+
+export const register = (name, email, password) => {
+  return api.post('/api/register', { name, email, password });
+};
+
+export default api;
