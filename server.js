@@ -2,15 +2,17 @@ import express from "express";
 import mongoose from "mongoose";
 import dotenv from "dotenv";
 import cors from "cors";
-import commentRoute from "./routes/commentRoute.js"; // <-- ADD THIS LINE
-import postRoute from "./routes/postRoutes.js";  // add this with your other imports
+import commentRoute from "./routes/commentRoute.js"; 
+import postRoute from "./routes/postRoutes.js";  
 import authRoute from "./routes/authRoute.js"
+import passwordRoute from "./routes/passwordRoute.js"; 
+
 dotenv.config();
 
 const app = express();
 
 app.use(cors({
-  origin: 'http://localhost:5173' // Your Vite dev server
+  origin: 'http://localhost:5173' 
 }));
 app.use(express.json());
 
@@ -28,11 +30,11 @@ app.get("/", (req, res) => {
   res.send("API is running...");
 });
 
-app.use("/posts", postRoute);  // add this with your other routes
+app.use("/posts", postRoute);  
 
 
 app.use("/comments", commentRoute);
-app.use("/auth", authRoute); // ADD THIS
+app.use("/auth", authRoute);
 
 
 mongoose.connect(process.env.MONGO_URI)
