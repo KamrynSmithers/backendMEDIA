@@ -4,7 +4,7 @@ import dotenv from "dotenv";
 import cors from "cors";
 import commentRoute from "./routes/commentRoute.js"; // <-- ADD THIS LINE
 import postRoute from "./routes/postRoutes.js";  // add this with your other imports
-
+import authRoute from "./routes/authRoute.js"
 dotenv.config();
 
 const app = express();
@@ -32,6 +32,7 @@ app.use("/posts", postRoute);  // add this with your other routes
 
 
 app.use("/comments", commentRoute);
+app.use("/auth", authRoute); // ADD THIS
 
 
 mongoose.connect(process.env.MONGO_URI)
