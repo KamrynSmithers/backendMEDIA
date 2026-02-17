@@ -35,7 +35,7 @@ app.use("/posts", postRoute);
 
 app.use("/comments", commentRoute);
 app.use("/auth", authRoute);
-
+app.use("/password", passwordRoute);
 
 mongoose.connect(process.env.MONGO_URI)
   .then(() => {
