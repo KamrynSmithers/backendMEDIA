@@ -24,3 +24,6 @@ export const forgotPassword = async (req, res) => {
         pass: process.env.EMAIL_PASS,
       },
     });
+
+    const resetUrl = `http://localhost:5173/reset-password/${resetToken}`;
+    
