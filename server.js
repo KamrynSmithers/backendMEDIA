@@ -6,7 +6,7 @@ import commentRoute from "./routes/commentRoute.js";
 import postRoute from "./routes/postRoutes.js";  
 import authRoute from "./routes/authRoute.js"
 import passwordRoute from "./routes/passwordRoute.js"; 
-
+import mediaCommentRoute from "./routes/mediaCommentRoutes.js"
 dotenv.config();
 
 const app = express();
@@ -36,6 +36,7 @@ app.use("/posts", postRoute);
 app.use("/comments", commentRoute);
 app.use("/auth", authRoute);
 app.use("/password", passwordRoute);
+app.use("/media-comments", mediaCommentRoute)
 
 mongoose.connect(process.env.MONGO_URI)
   .then(() => {
